@@ -68,4 +68,6 @@ path将文件输出到项目的哪个位置
 
 ###  Webpack 打包输出内容
 
+当我们在终端成功执行`npm start`命令后会看到终端输出了一堆内容（效果如下），这些内容是干什么的，这里我们就简单说下。
+[webpack打包输出](https://github.com/fangfeiyue/webpack/blob/master/src/img/%E6%89%93%E5%8C%85%E8%BE%93%E5%87%BA.png)
 
