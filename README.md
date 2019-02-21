@@ -72,3 +72,21 @@ path将文件输出到项目的哪个位置
 
 ![webpack打包输出](https://github.com/fangfeiyue/webpack/blob/master/src/img/%E6%89%93%E5%8C%85%E8%BE%93%E5%87%BA.png)
 
+`Hash: 5f3b653ffdb4453a9037`本次打包对应的唯一的hash值
+
+`Version: webpack 4.29.5`打包用的webpack版本
+
+`Time: 86ms`本次打包耗时多少
+
+| Asset | Size | Chunks | Chunk Names  |
+| ------ | ------ | ------ | ------ |
+| bundle.js | 1.18 KiB  | 0 | main |
+
+Asset：bundle.js表示打包了一个bundle.js文件
+
+Size:1.18KiB表示打包后的文件大小为1.18Kb
+
+Chunks：0表示每个文件对应的唯一id值
+
+Chunk Names：main表示js文件对应的名字为main，在我们配置单个js文件打包的时候在webpack打包文件中写了`entry: "./src/1webpack初识/index.js"`，它实际是`entry: {main: "./src/1webpack初识/index.js"}`的简写，Chunk Names对应的main就是entry配置的main
+
