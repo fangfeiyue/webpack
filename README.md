@@ -90,3 +90,27 @@ Chunks：0表示每个文件对应的唯一id值
 
 Chunk Names：main表示js文件对应的名字为main，在我们配置单个js文件打包的时候在webpack打包文件中写了`entry: "./src/1webpack初识/index.js"`，它实际是`entry: {main: "./src/1webpack初识/index.js"}`的简写，Chunk Names对应的main就是entry配置的main
 
+```
+WARNING in configuration
+The 'mode' option has not been set, webpack will fallback to 'production' for this value. Set 'mode' option to 'development' or 'production' to enable defaults for each environment.
+You can also set it to 'none' to disable any default behavior. Learn more: https://webpack.js.org/concepts/mode/
+```
+
+警告是因为我们在配置webpack配置文件的时候没有设置mode选项，mode的值可为development和production，如果赋值为development打包后的budnle文件不会被压缩，如果配置成production打包后的bundle文件会压缩。因为我们是现在是开发用的所以可以先配置成development,代码如下：
+
+```
+const path = require("path");
+
+module.exports = {
+  mode: "development",
+  entry: "./src/1webpack初识/index.js",
+  output: {
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "dist")
+  }
+};
+```
+
+
+
+
