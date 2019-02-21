@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/fangfeiyue/webpack#readme",
   "devDependencies": {
+    "file-loader": "^3.0.1",
     "webpack": "^4.29.5",
     "webpack-cli": "^3.2.3"
   }

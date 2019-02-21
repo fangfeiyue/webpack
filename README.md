@@ -96,7 +96,7 @@ The 'mode' option has not been set, webpack will fallback to 'production' for th
 You can also set it to 'none' to disable any default behavior. Learn more: https://webpack.js.org/concepts/mode/
 ```
 
-警告是因为我们在配置webpack配置文件的时候没有设置mode选项，mode的值可为development和production，如果赋值为development打包后的budnle文件不会被压缩，如果配置成production打包后的bundle文件会压缩。因为我们是现在是开发用的所以可以先配置成development,代码如下：
+警告是因为我们在配置webpack配置文件的时候没有设置mode选项，mode的值可为development和production，默认为production。如果赋值为development打包后的budnle文件不会被压缩，如果配置成production打包后的bundle文件会压缩。因为我们是现在是开发用的所以可以先配置成development,代码如下：
 
 ```
 const path = require("path");
@@ -110,6 +110,10 @@ module.exports = {
   }
 };
 ```
+
+### loader
+
+
 
 
 
