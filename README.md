@@ -14,7 +14,7 @@ package.json中添加private属性，如果这个属性被设置为true，npm将
 
 局部安装
 
-在终端执行`npm install --save-dev webpack`或者`npm install --save-dev webpack@<version>`<version>指特定的版本号，如果使用webpack4或者webpack4以后的版本需要安装CLI，在终端输入`npm install --save-dev webpack-cli`。局部安装时--save-dev命令可以简写为-D.
+在终端执行`npm install --save-dev webpack`或者`npm install --save-dev webpack@<version>`<version>指特定的版本号，如果使用webpack4或者webpack4以后的版本需要安装CLI，在终端输入`npm install --save-dev webpack-cli`。局部安装时--save-dev命令可以简写为-D。安装`webpack-cli`的作用使我们可以在终端运行webpack命令
 
 仅仅在局部安装完webpack后，在终端输入`webpack -v`查看webpack版本会报`webpack: command not found`，这是因为当输入`webpack`命令后，nodeJS会到全局模块的目录中找webapck，但是我们并没有在全局安装webpack所以就找不到webpack这个命令。这个时候应该怎么查看局部安装的webpack版本呢？我们可以在终端输入`npx webpack -v`就可以看到webpack版本了。npx这个命令会在当前项目中的node_modules文件中去找webpack。这样的好处是便于我们在不同的项目中使用不同的webpack版本。
 
@@ -28,7 +28,7 @@ package.json中添加private属性，如果这个属性被设置为true，npm将
 
 ### webpack的配置文件
 
-webpack团队提供了一些默认的配置，所以我们在终端执行`npx webpack index.js`可以将index.js引用的js文件进行打包 wepack支持配置文件，以便应对更加复杂的webpack配置。
+webpack团队提供了一些默认的配置，所以我们在终端执行`npx webpack index.js`可以将index.js引用的js文件进行打包。但是我们在做项目打包的时候，每个工程的特点和复杂度是不同的，默认webpack配置不一定能满足我们的需求，需要我们根据自己的项目来配置webpack，所以webpack提供了配置文件以便开发者根据自己的项目配置webpack。
 
 在项目根目录下新建webpack.config.js文件并输入以下代码，然后在终端执行`npx wepback`依然可以正常执行命令。
 
@@ -65,5 +65,7 @@ path将文件输出到项目的哪个位置
 ...
 ```
 以后我们要运行webpack只需要在终端输入`npm start`命令即可。
+
+###  Webpack 打包输出内容
 
 
