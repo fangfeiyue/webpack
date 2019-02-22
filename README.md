@@ -116,5 +116,9 @@ module.exports = {
 
 
 
+url-loader
+
+
+
 
 
