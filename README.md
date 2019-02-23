@@ -317,6 +317,15 @@ devtool可配置的值如下
 
 ![devtool的值](https://github.com/fangfeiyue/webpack/blob/master/readmeImg/sourceMap.png)
 
+当我们给devtool赋值为source-map然后打包，会在打包目录下生成一个.map的文件，文件里面就是文件的映射关系。
+
+devtool赋值为inline-source-map然后打包，打包的目录下不会生成.map文件，会将文件的映射关系通过dataUrl的方式写到打包的js文件中。
+
+加上cheap打包的性能就会提升，如果没有cheap，代码报错后会定位到第几行第几列，一般我们只需要知道错误在第几行就行
+
+
+
+
 
 
 
