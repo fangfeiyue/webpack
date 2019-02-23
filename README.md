@@ -313,7 +313,9 @@ sourcemap就是为了解决上述代码定位的问题，简单理解，就是�
 
 webpack配置的mode值为development时会自动开启sourceMap，我们可以给devtool属性赋值来,
 
+devtool可配置的值如下
 
+![devtool的值](https://github.com/fangfeiyue/webpack/blob/master/readmeImg/sourceMap.png)
 
 
 
