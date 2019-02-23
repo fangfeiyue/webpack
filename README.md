@@ -224,6 +224,85 @@ module.exports = {
 
 当我们在书写css时难免会用到css3的一些属性，但是有些浏览器对css3的支持并不是很友好，这个时候我们需要给特定的css3属性添加浏览器前缀。如果所有的前缀都又我们手动添加实在太繁琐，webpack能不能帮助我们自动添加厂商的前缀呢？答案是肯定的，我们可以使用postcss-loader来实现这个功能。
 
+终端输入`npm i -D postcss-loader autoprefixer`命令进行安装,其中autoprefixer是自动添加厂商前缀用的。
+
+在项目根目录创建postcss.config.js文件，文件的具体配置内容如下
+
+```
+module.exports = {
+  plugins: [
+    require('autoprefixer')
+  ]
+}
+```
+
+然后在终端执行npm start进行打包，启动项目即可看到相关的css属性名前增加了厂商前缀
+
+css-loader的配置项importLoaders帮助我们配置在使用css-loader之前应该使用哪些loader
+
+```
+module.exports = {
+  // ...
+  module: {
+    rules: [{
+      test: /\.scss$/,
+      use: ['style-loader', {
+        loader: 'css-loader',
+        options: {
+          // 0 => no loaders (default); 1 => postcss-loader; 2 => postcss-loader, sass-loader
+          importLoaders: 2 
+        }
+      }, 'postcss-loader', 'sass-loader']
+    }]
+  }
+};
+```
+
+### 使用webpack打包字体文件
+
+### webpack
+
+### HtmlWebpackPlugin
+
+HtmlWebpackPlugin会在打包结束后，自动生成一个html文件，并把打包生成的js自动引入到这个html文件中
+
+```
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+
+module.exports = {
+  //...
+  module: {
+    //...
+  plugins: [new HtmlWebpackPlugin({
+    template: 'src/index.html'
+  })]
+};
+```
+
+### clean-webpack-plugin
+
+一个webpack插件，用于在构建之前移除/清理构建文件夹
+
+安装
+
+```
+npm i clean-webpack-plugin --save-dev
+```
+
+使用
+
+```
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+ 
+module.exports = {
+  //...
+  module: {
+    //...
+  plugins: [new CleanWebpackPlugin(['dist'])]
+};
+```
+
 
 
 
