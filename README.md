@@ -317,11 +317,24 @@ devtool可配置的值如下
 
 ![devtool的值](https://github.com/fangfeiyue/webpack/blob/master/readmeImg/sourceMap.png)
 
-当我们给devtool赋值为source-map然后打包，会在打包目录下生成一个.map的文件，文件里面就是文件的映射关系。
+这里我们挑选几个常用的做下介绍：
 
-devtool赋值为inline-source-map然后打包，打包的目录下不会生成.map文件，会将文件的映射关系通过dataUrl的方式写到打包的js文件中。
+`eval`是打包速度最快的一种方式，对于比较复杂的代码，打包后的提示信息可能会不全面
 
-加上cheap打包的性能就会提升，如果没有cheap，代码报错后会定位到第几行第几列，一般我们只需要知道错误在第几行就行
+`source-map`会在打包目录下生成一个.map的文件，文件里面就是文件的映射关系。
+
+`inline-source-map`打包的目录下不会生成.map文件，会将文件的映射关系通过dataUrl的方式写到打包的js文件中。
+
+加上`cheap`打包的性能就会提升，如果没有cheap，代码报错后会定位到第几行第几列，一般我们只需要知道错误在第几行就行，只针对业务代码，不会第三方模块做映射
+
+`module`对业务代码和第三方模块做映射
+
+最佳实践：
+
+开发环境中建议使用`cheap-module-eval-source-map`这样打包速度快，提示信息也比较全面方便我们定位错误。
+
+生产环境一般不用sourceMap，如果想在生产环境也使用sourceMap定义错误建议将devtool的值设置为`cheap-module-source-map`
+
 
 
 
