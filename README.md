@@ -335,6 +335,41 @@ devtool可配置的值如下
 
 生产环境一般不用sourceMap，如果想在生产环境也使用sourceMap定义错误建议将devtool的值设置为`cheap-module-source-map`
 
+### webpackDevServer
+
+可以帮我们监听文件的变化自动打包并刷新浏览器
+
+安装
+```
+npm i -D webpack-dev-server
+```
+
+使用
+```
+// webpack配置文件
+module.exports = {
+  //...
+  devServer: {
+    port: 8080,
+    // 配置代理
+    proxy: {
+      '/api': 'http://locahost:3000'
+    },
+    // 是否自动打开浏览器
+    open: true,
+    contentBase: './dist'
+  }
+  //...
+};
+
+// package.json
+//...
+"scripts": {
+  "start": "webpack-dev-server"
+}
+//...
+```
+终端执行npm start
 
 
 
