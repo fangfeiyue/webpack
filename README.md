@@ -379,17 +379,68 @@ module.exports = {
 
 ### 使用babel处理ES6语法
 
-npm install --save-dev babel-loader @babel/core
+首先安装babel-loader和babel/core
 
-{ test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
+`npm install --save-dev babel-loader @babel/core`
+
+webpack的配置文件中添加如下内容
+```
+module: {
+  rules: [
+    { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
+  ]
+}
+```
 
 babel-loader是webpack和babel做通信的一个桥梁，babel-loader并不会帮我们把es6语法转换成es5语法，babel/preset-env可以帮助我们实现es5的转换
 
-安装babel/preset-env
-npm install @babel/preset-env --save-dev
+安装babel/preset-env，在终端执行`npm install @babel/preset-env --save-dev`
 
+新建.babelrc文件，输入以下内容
+```
+{
+  "presets": ["@babel/preset-env"]
+}
+```
 
+然后打包代码，查看打包后的代码发现有有些代码被转换成了ES5语法，如箭头函数，const等，但是像Promise这种还是没有转换，这样如果我们在低版本浏览器运行项目还是会报错，因为低版本浏览器不支持ES6语法
 
+这个时候我们需要再安装babel/polyfill来实现更彻底的转换
+
+`npm install --save @babel/polyfill`
+
+然后再打包，发现这次ES6语法都转成了ES5语法，但是打包后的文件变的很大，安装babel/polyfill的时候打包后的文件只有几KB
+
+![](https://github.com/fangfeiyue/webpack/blob/master/readmeImg/babel1.png)
+安装了babel/polyfill后再打包得到的文件居然有几百KB
+![](https://github.com/fangfeiyue/webpack/blob/master/readmeImg/babel2.png)
+这是因为babel/polyfill要帮我们实现一些低版本浏览器支持的JS代码，然后把这些代码加入到打包后的文件中，这样就导致打包后的文件变的很大
+
+修改.babelrc文件如下
+```
+{
+  "presets": [["@babel/preset-env", {
+    "useBuiltIns": "usage"
+  }]]
+}
+```
+然后再打包就会发现打包后的文件小了很多
+![](https://github.com/fangfeiyue/webpack/blob/master/readmeImg/babel3.png)
+我们在.babelrc文件中配置了useBuiltIns参数，会在我们打包的过程中根据代码业务需求来注入对应的内容减少无用的代码注入，可以明显的减小打包后的文件的体检。虽然打包后的文件变小了，但是相比之前还是有点大，修改.babelrc文件如下
+```
+{
+  "presets": [["@babel/preset-env", {
+    "targets": {
+      "edge": "17",
+      "firefox": "60",
+      "chrome": "67",
+      "safari": "11.1",
+    },
+    "useBuiltIns": "usage"
+  }]]
+}
+```
+babel/polyfill会污染全局环境，在我们写库代码的时候要用babel/plugin-transform-runtime
 
 
 
