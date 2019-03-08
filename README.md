@@ -377,8 +377,16 @@ module.exports = {
 
 
 
+### 使用babel处理ES6语法
 
+npm install --save-dev babel-loader @babel/core
 
+{ test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
+
+babel-loader是webpack和babel做通信的一个桥梁，babel-loader并不会帮我们把es6语法转换成es5语法，babel/preset-env可以帮助我们实现es5的转换
+
+安装babel/preset-env
+npm install @babel/preset-env --save-dev
 
 
 
