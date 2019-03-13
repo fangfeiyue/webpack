@@ -470,8 +470,20 @@ webpack4 开始新增了一个 sideEffects 特性，通过给 package.json 加�
 
 ### Code Spliting
 
+开发环境下：
+```
+optimization: {
+  splitChunks: {
+    chunks: 'all'
+  }
+}
+```
 
+在生产模式下webpack会自动帮我们进行代码分割，无需配置。
 
+[babel/plugin-syntax-dynamic-import](https://babeljs.io/docs/en/babel-plugin-syntax-dynamic-import/)
+
+ 
 
 
 

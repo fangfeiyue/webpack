@@ -14,14 +14,14 @@ const devConfig = {
   plugins: [
     new webpack.HotModuleReplacementPlugin()
   ],
-  optimization: {
-    // tree shaking
-    usedExports: true,
-    // code spliting
-    splitChunks: {
-      chunks: 'all'
-    }
-  }
+  // optimization: {
+  //   // tree shaking
+  //   usedExports: true,
+  //   // code spliting
+  //   splitChunks: {
+  //     chunks: 'all'
+  //   }
+  // }
 };
 
 module.exports = merge(commonConfig, devConfig);
