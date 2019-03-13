@@ -1,0 +1,13 @@
+{
+  "presets": [["@babel/preset-env", {
+      "useBuiltIns": "usage",
+      "targets": {
+          "chrome": "58",
+          "ie": "11"
+        }
+      }
+    ]
+  ],
+  // 异步加载
+  "plugins": ["@babel/plugin-syntax-dynamic-import"]
+}
