@@ -412,7 +412,9 @@ babel-loader是webpack和babel做通信的一个桥梁，babel-loader并不会�
 然后再打包，发现这次ES6语法都转成了ES5语法，但是打包后的文件变的很大，安装babel/polyfill的时候打包后的文件只有几KB
 
 ![](https://github.com/fangfeiyue/webpack/blob/master/readmeImg/babel1.png)
+
 安装了babel/polyfill后再打包得到的文件居然有几百KB
+
 ![](https://github.com/fangfeiyue/webpack/blob/master/readmeImg/babel2.png)
 这是因为babel/polyfill要帮我们实现一些低版本浏览器支持的JS代码，然后把这些代码加入到打包后的文件中，这样就导致打包后的文件变的很大
 
@@ -450,7 +452,7 @@ babel/polyfill会污染全局环境，在我们写库代码的时候要用babel/
 
 ### Tree Shaking
 
-Tree Shaking只支持ES Module
+Tree Shaking只支持ES Module, import支持tree-shaking，require不支持tree-shaking
 
 development是模式默认是没有Tree shaking这个功能的,需要在webpack配置文件中输入如下内容
 ```
@@ -484,7 +486,19 @@ optimization: {
 [babel/plugin-syntax-dynamic-import](https://babeljs.io/docs/en/babel-plugin-syntax-dynamic-import/)
 
 
+### 打包分析，Preloading, Prefetching
 
+
+
+package.json
+```
+"scripts": {
+  "start": "webpack --profile --json > stats.json --config ./build/webpack.dev.js",
+}
+```
+终端执行npm start会在项目根目录下生成一个stats.json文件，然后打开[analyse](http://webpack.github.com/analyse)这个网站，在这个网站上传stas.json文件即可看到一些分析
+
+![分析结果](https://github.com/fangfeiyue/webpack/blob/master/src/img/webpack分析.png)
  
 
 
