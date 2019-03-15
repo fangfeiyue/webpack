@@ -498,7 +498,7 @@ package.json
 ```
 终端执行npm start会在项目根目录下生成一个stats.json文件，然后打开[analyse](http://webpack.github.com/analyse)这个网站，在这个网站上传stas.json文件即可看到一些分析
 
-![分析结果](https://github.com/fangfeiyue/webpack/blob/master/src/img/webpack分析.png)
+![分析结果](https://github.com/fangfeiyue/webpack/blob/master/readmeImg/webpack%E5%88%86%E6%9E%90.png)
  
 
 
