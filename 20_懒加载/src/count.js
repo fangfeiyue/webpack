@@ -6,7 +6,4 @@ function min() {
   console.log(8 - 2);
 }
 
-export {
-  add,
-  min
-};
+export default add;
