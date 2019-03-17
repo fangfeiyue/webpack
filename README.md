@@ -488,8 +488,6 @@ optimization: {
 
 ### 打包分析，Preloading, Prefetching
 
-
-
 package.json
 ```
 "scripts": {
@@ -500,6 +498,29 @@ package.json
 
 ![分析结果](https://github.com/fangfeiyue/webpack/blob/master/readmeImg/webpack%E5%88%86%E6%9E%90.png)
  
+### Webpack 与浏览器缓存( Caching )
+
+hash和contenthash区别？
+
+```
+output: {
+  filename: '[name].[contenthash].js',
+  chunkFilename: '[name],[contenthash].js',
+  path: path.resolve(__dirname, '../dist')
+}
+```
+
+用老版本的webpack打包时，即时文件内容没有改变有时也会打包文件的hash值也会变，这时需要在配置文件中配置runtimeChunk属性
+
+manifest(包和包之间的关系)，在老版本的webpack打包的时候可能会发生变化，导致contenthash也发生了变化。
+
+```
+optimization: {
+  runtimeChunk: {
+    name: 'runtime'
+  }
+}
+``` 
 
 
 
