@@ -522,9 +522,54 @@ optimization: {
 }
 ``` 
 
+### shimming
 
+将this指向window
 
+npm install imports-loader
 
+```
+{
+  // 将this指向window
+  loader: 'imports-loader?this=>window'
+}
+```
+
+ProvidePlugin
+
+```
+plugins: [
+  new webpack.ProvidePlugin({
+    // 当发现一个模块用了$这个字符串，会自动为这个模块引入jquery
+    $: 'jquery',
+    // 给某个包中的特定方法起别名,如myUI.js中$('body').css('background', _join(['blue'], ''));
+    _join: ['lodash', 'join']
+  })
+]
+```
+
+### 环境变量
+
+package.json中配置--env.production属性
+
+```
+"scripts": {
+  "start": "webpack --config ./build/webpack.common.js",
+  "build": "webpack --env.production --config ./build/webpack.common.js"
+},
+```
+
+webpack.common.js
+
+```
+module.exports = (env) => {
+  if (env && env.production) {
+    return merge(commonConfig, prodConfig)
+  }else {
+    merge(commonConfig, devConfig)
+  }
+};
+```
 
 
 
