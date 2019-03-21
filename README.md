@@ -580,7 +580,17 @@ module.exports = (env) => {
 
 ### EsLint 在 Webpack 中的配置
 
+### Library的打包
 
+当我们打包库的时候可以在webpack中配置如下内容
+```
+output: {
+  // ...
+  library: 'library',
+  libraryTarget: 'umd'
+  // ...
+}
+```
 
 # 遇到的问题
 

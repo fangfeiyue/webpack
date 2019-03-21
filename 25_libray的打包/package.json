@@ -1,0 +1,17 @@
+{
+  "name": "25_libray",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "keywords": [],
+  "author": "FangFeiyue",
+  "license": "MIT",
+  "devDependencies": {
+    "lodash": "^4.17.11",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  }
+}
