@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
-import Child from './child/Child';
+// import Child from './child/Child';
+
+// 别名的方式引入，需要配置alias
+import Child from 'fang/Child';
 
 class App extends Component {
   constructor(props) {

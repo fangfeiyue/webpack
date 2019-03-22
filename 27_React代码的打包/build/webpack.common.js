@@ -8,6 +8,13 @@ const commonConfig = {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, '../dist')
   },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+    alias: {
+      fang: path.resolve(__dirname, '../src/child')
+    }
+    // mainFiles: ['index', 'child']
+  },
   module: {
     rules: [{
         test: /\.css$/,
@@ -20,8 +27,8 @@ const commonConfig = {
         },
         'postcss-loader',
         'sass-loader'],
-      },{ 
-        test: /\.js$/, 
+      },{  
+        test: /\.jsx?$/, 
         exclude: /node_modules/, 
         loader: "babel-loader" }],
   },
