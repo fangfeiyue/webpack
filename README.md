@@ -592,6 +592,52 @@ output: {
 }
 ```
 
+### PWA
+
+安装workbox-webpack-plugin
+
+`npm install workbox-webpack-plugin -D`
+
+配置webpack生产环境文件
+
+```
+const WorkboxPlugin = require('workbox-webpack-plugin');
+
+// ...
+plugins: [
+  new WorkboxPlugin.GenerateSW({
+    skipWaiting: true, // 强制等待中的 Service Worker 被激活
+    clientsClaim: true, // Service Worker 被激活后使其立即获得页面控制权
+  })
+]
+// ...
+```
+
+index.js文件中处理逻辑
+
+```
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js').then(registration => {
+      console.log(registration);
+    }).catch(err => {
+      console.log('error');
+    });
+  });
+}
+```
+
+
+
+chrome://flags/
+
+
+
+
+
+
+
+
 # 遇到的问题
 
 1.在终端执行npm install的时候终端报`cannot find ./lib/extract-stream.js`，百度了半天也没找到原因，后来想可能是升级node导致的，怎么卸载当前Mac上node，npm配置呢
