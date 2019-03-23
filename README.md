@@ -631,6 +631,30 @@ if ('serviceWorker' in navigator) {
 
 chrome://flags/
 
+### webpack性能优化
+
+跟上技术的迭代（Node、Npm、Yarn）
+
+在尽可能少的模块上引用loader
+
+plugin尽可能精简并确保可靠
+
+resolve参数合理配置
+```
+resolve: {
+  extensions: ['.js', '.jsx'],
+  alias: {
+    fang: path.resolve(__dirname, '../src/child')
+  }
+  // mainFiles: ['index', 'child']
+}
+```
+
+
+
+DllPlugin适用于dev环境开发调试生产环境这个插件无效的
+
+
 
 
 
